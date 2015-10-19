@@ -6,12 +6,12 @@ node_modules
 .DS_Store
 .coverage
 data/
-# local settings
+
 */settings/local_settings.py
+*.css
+*.css.map
 
 build/
 gzip/
 static/
-
-# ignore the css file
-*/assets/styles/*.css
+migrations/
