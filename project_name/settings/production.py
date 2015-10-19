@@ -1,4 +1,5 @@
 import os
+from datetime import date
 
 from common import *
 
@@ -18,15 +19,18 @@ BAKERY_VIEWS = (
     # Django Bakery Views go here. Example:
     # '{{ project_name }}.apps.some_news_app.views.SomeNewsAppView',
 )
-AWS_STAGING_BUCKET_NAME = 'apps-staging-cironline-org'
-AWS_BUCKET_NAME = 'apps-cironline-org'
-AWS_MEDIA_BUCKET_NAME = 'media-apps-cironline-org'
+AWS_STAGING_BUCKET_NAME = 'staging.projects.sfchronicle.com'
+AWS_BUCKET_NAME = 'projects.sfchronicle.com'
+AWS_MEDIA_BUCKET_NAME = 'media.projects.sfchronicle.com'
 
-VERBOSE_APP_NAME = '{{ project_name }}' # App name in production
+VERBOSE_APP_NAME = '{}/{}'.format(
+    date.today().year,
+    '{{ project_name }}'
+)  # App name in production plus the publish year
 
-STATIC_URL = os.path.join(
+STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
+STATIC_URL = '{}/{}/{}/'.format(
     "//s3-us-west-1.amazonaws.com",
     AWS_MEDIA_BUCKET_NAME,
-    VERBOSE_APP_NAME,
-    '' # Adding an empty string ensures the path ends with a /
+    VERBOSE_APP_NAME
 )

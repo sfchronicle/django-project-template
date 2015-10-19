@@ -12,34 +12,33 @@ Finally, save as load_raw_model.py and execute
 """
 import os
 
-import csvkit
-
 from django.conf import settings
 from django.core.management.base import BaseCommand
+
+from lib.utils import all_files, log
+from postgres_copy import CopyMapping
 
 from {{project_name}}.apps.ADD_APP_NAME_HERE.models import RawData
 
 
 class Command(BaseCommand):
-    def handle(self, *args, **options):
-        help = "Take model generated with "
-        data = os.path.join(settings.DATA_DIR, 'ADD_CSV_NAME_HERE.csv')
+def handle(self, *args, **options):
+    data = os.path.join(settings.BASE_DIR, 'data')
+    files = list(all_files(data, '*.csv'))  # assumes there's only one CSV in directory
 
-        with open(data) as csvfile:
+    for filepath in files:
+        log('Opening file {}'.format(filepath), 'cyan')
 
-            reader = csvkit.reader(csvfile)
-            headers = reader.next()
-            count = 0
+        log('  Loading data ...')
 
-            for row in reader:
-                r = RawData()
-                # example
-                # r.model_field = row[0]
-                # r.another_model_field = row[1]
+        copy = CopyMapping(
+            RawData,
+            filepath,
+            dict(
+                some_property="Some Property"
+            )
+        )
 
-                try:
-                    count += 1
-                    r.save()
-                    print("Records created: %i ..." % count)
-                except Exception, e:
-                    raise e
+        copy.save()
+
+        log('    Data loaded!', 'green')
