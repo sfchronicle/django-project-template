@@ -13,7 +13,7 @@ Django Project Template is a collection of development tasks and optimizations a
 ## Minimum Requirements
 This project supports Ubuntu Linux 14.04 and Mac OS X Yosemite. It is not tested or supported for the Windows OS.
 
-- [Django 1.7+](https://www.djangoproject.com/)
+- [Django 1.8+](https://www.djangoproject.com/)
 - [PostgreSQL 9.3+](http://www.postgresql.org/)
 - [PostGIS 2.1+](http://postgis.net/)
 - [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/)
@@ -23,13 +23,13 @@ This project supports Ubuntu Linux 14.04 and Mac OS X Yosemite. It is not tested
 ```bash
 $ mkvirtualenv project_name
 $ pip install django fabric
-$ django-admin.py startproject --extension=py,.gitignore --template=https://github.com/cirlabs/django-project-template/archive/master.zip project_name
+$ django-admin.py startproject --extension=py,.gitignore --template=https://github.com/sfchronicle/django-project-template/archive/master.zip project_name
 $ cd project_name
 $ fab bootstrap # bootstrap project
 ```
 
 ### Using Yeoman, Grunt and Bower (__recommended__)
-While this template works fine out the box, it's recommended you use use our yeoman generator to manage your static assets (HTML, CSS, JS). We built [generator-newsapp](https://github.com/cirlabs/generator-newsapp) to work in concert with this project template. For this to work you'll need [Node.js 0.12.x](http://nodejs.org/) or [io.js 1.2.x](https://iojs.org/).
+While this template works fine out the box, it's recommended you use use our yeoman generator to manage your static assets (HTML, CSS, JS). We built [generator-newsapp](https://github.com/cirlabs/generator-newsapp) to work in concert with this project template. For this to work you'll need [Node.js 0.12.x](http://nodejs.org/)
 
 After running the quick start above run `fab scaffold` to install the required node.js libraries and generate the templates needed for frontend development.
 
@@ -84,9 +84,6 @@ Need help? Open an issue in: [ISSUES](https://github.com/cirlabs/django-project-
 
 ### Contributing
 Want to improve the template? Fork the repo, add your changes and send a pull request.
-
-### Thanks
-Special thanks goes to Chase Davis for his initial work at developing our Django template for CIR. Also, this project's structure borrows many great ideas from Ben Welsh at the Los Angeles Times Datadesk and his [Django Project Template](https://github.com/datadesk/django-project-template).
 
 ### License
 The MIT License (MIT)
