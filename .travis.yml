@@ -4,7 +4,7 @@ python:
     - '3.4'
 install:
 - pip install django
-- django-admin.py startproject --extension=py,.gitignore --template=https://github.com/cirlabs/django-project-template/archive/master.zip aproject
+- django-admin.py startproject --extension=py,.gitignore --template=https://github.com/sfchronicle/django-project-template/archive/master.zip aproject
 - cd aproject
 - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then pip install -r requirements/python2.txt; fi
 - pip install -r requirements/base.txt
